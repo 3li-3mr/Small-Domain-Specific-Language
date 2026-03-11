@@ -1,0 +1,28 @@
+%{
+/* -------------------------------------------------
+   1. C Declarations Section
+   ------------------------------------------------- */
+#include "parser.tab.h" /* This links Flex to the tokens Bison creates */
+#include <stdlib.h>     /* Needed for functions like atoi() */
+
+%}
+
+/* Flex definitions/options (if any) go here */
+
+%%
+/* -------------------------------------------------
+   2. Rules Section
+   ------------------------------------------------- */
+/* Regex Pattern */      /* { C Action } */
+
+
+
+%%
+/* -------------------------------------------------
+   3. User C Code Section
+   ------------------------------------------------- */
+/* Standard C functions go here */
+
+int yywrap() {
+    return 1; 
+}

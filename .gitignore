@@ -1,0 +1,35 @@
+# =========================
+# C / Flex / Bison (Phase 1)
+# =========================
+# Flex generated C code
+lex.yy.c
+
+# Bison generated C code and headers
+parser.tab.c
+parser.tab.h
+
+# Compiled object files
+*.o
+
+# Executables (Windows/MinGW & Linux/Mac)
+*.exe
+mini
+a.out
+
+# =========================
+# Java (Phases 2 & 3)
+# =========================
+# Compiled Java bytecode
+*.class
+
+# =========================
+# OS & IDE specifics
+# =========================
+# Windows thumbnail cache
+Thumbs.db
+
+# macOS folder attributes
+.DS_Store
+
+# VS Code directory (Optional: remove this if you want to share workspace settings)
+.vscode/
