@@ -1,9 +1,6 @@
 package Java;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
 abstract class ASTNode {
     public abstract int evaluate();
@@ -16,6 +13,11 @@ class NumberNode extends ASTNode {
     public NumberNode(int value) {
         this.value = value;
     }
+
+    public int getValue() {
+        return value;
+    }
+
     
     @Override
     public int evaluate(){
@@ -37,6 +39,14 @@ class AddNode extends ASTNode {
     public AddNode(ASTNode left, ASTNode right){
         this.left = left;
         this.right = right;
+    }
+
+    public ASTNode getRight() {
+        return right;
+    }
+
+    public ASTNode getLeft() {
+        return left;
     }
 
     @Override
@@ -61,6 +71,14 @@ class SubtractNode extends ASTNode {
         this.right = right;
     }
 
+    public ASTNode getRight() {
+        return right;
+    }
+
+    public ASTNode getLeft() {
+        return left;
+    }
+
     @Override
     public int evaluate(){
         return left.evaluate() - right.evaluate();
@@ -83,6 +101,14 @@ class MultiplyNode extends ASTNode {
         this.right = right;
     }
 
+    public ASTNode getRight() {
+        return right;
+    }
+
+    public ASTNode getLeft() {
+        return left;
+    }
+
     @Override
     public int evaluate(){
         return left.evaluate() * right.evaluate();
@@ -103,6 +129,14 @@ class DivideNode extends ASTNode {
     public DivideNode(ASTNode left, ASTNode right){
         this.left = left;
         this.right = right;
+    }
+
+    public ASTNode getRight() {
+        return right;
+    }
+
+    public ASTNode getLeft() {
+        return left;
     }
 
     @Override
@@ -165,11 +199,17 @@ public class phase2 {
         System.out.println("Enter an expression (space-separated tokens): ");
         String input = scanner.nextLine();
         scanner.close();
-        Queue<String> tokens = new LinkedList<>(Arrays.asList(input.split(" ")));
-        
-        ASTNode tree = parseArith(tokens);
-        System.out.println("\nAST: ");
-        tree.print("");
-        System.out.println("\nResult = " + tree.evaluate());
+        try {
+            Queue<String> tokens = new LinkedList<>(Arrays.asList(input.split(" ")));
+            ASTNode tree = parseArith(tokens);
+            System.out.println("\nAST: ");
+            tree.print("");
+            System.out.println("\nResult = " + tree.evaluate());
+            
+        } catch (ArithmeticException e) {
+            System.err.println("Math Error: Division by zero!");
+        } catch (Exception e) {
+            System.err.println("Syntax Error: Invalid expression format.");
+        }
     }
 }
