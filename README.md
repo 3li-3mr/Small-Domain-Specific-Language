@@ -105,7 +105,13 @@ parseArith()
    └── parseExpression()
           └── parseFactor()
 ```
+---
 
+## Arithmetic Expression Modeling
+
+- **Encapsulation:** Each mathematical operation and operand is encapsulated within its own class (e.g., `AddNode`, `MultiplyNode`, `NumberNode`).
+- **Inheritance & Polymorphism:** All node classes inherit from a common `abstract class ASTNode`. This allows the parser to treat any part of the expression tree uniformly, invoking `evaluate()` or `print()` regardless of whether the node is a leaf or a branch.
+- **Composite Pattern:** The structure forms a tree where branch nodes (`OperatorNodes`) contain references to other `ASTNode` objects, modeling complex nested expressions as a single object.
 ---
 
 ## Prefix Transformation
