@@ -1,27 +1,22 @@
 %{
-/* -------------------------------------------------
-   1. C Declarations Section
-   ------------------------------------------------- */
-#include "parser.tab.h" /* This links Flex to the tokens Bison creates */
-#include <stdlib.h>     /* Needed for functions like atoi() */
-
+#include "parser.tab.h"
+#include <stdlib.h>
 %}
 
-/* Flex definitions/options (if any) go here */
-
 %%
-/* -------------------------------------------------
-   2. Rules Section
-   ------------------------------------------------- */
-/* Regex Pattern */      /* { C Action } */
-
-
-
+[0-9]+  { 
+            yylval = atoi(yytext);
+            return NUMBER; 
+        }
+"+"   {return '+'; }
+"-"   {return '-'; }
+"*"   {return '*'; }
+"/"   {return '/'; }
+"("   {return '('; }
+")"   {return ')'; }
+[ \t]+   {}
+\n  {return '\n'; }
 %%
-/* -------------------------------------------------
-   3. User C Code Section
-   ------------------------------------------------- */
-/* Standard C functions go here */
 
 int yywrap() {
     return 1; 
