@@ -16,6 +16,9 @@ parser.tab.h
 mini
 a.out
 
+# bison templates
+C/data
+
 # =========================
 # Java (Phases 2 & 3)
 # =========================
